@@ -4,13 +4,14 @@ import Options from './Options/Options';
 import Feedback from './Feedback/Feedback';
 import Notification from './Notification/Notification';
 import Description from './description/Description';
+
 const App = () => {
   const [feedback, setFeedback] = useState(() => {
     const storedFeedback = localStorage.getItem('feedback');
     return storedFeedback ? JSON.parse(storedFeedback) : { good: 0, neutral: 0, bad: 0 };
   });
 
-  const { good, neutral, bad } = feedback;
+  const { good = 0, neutral = 0, bad = 0 } = feedback;
   const totalFeedback = good + neutral + bad;
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const App = () => {
   const updateFeedback = (feedbackType) => {
     setFeedback((prevFeedback) => ({
       ...prevFeedback,
-      [feedbackType]: prevFeedback[feedbackType] + 1,
+      [feedbackType]: prevFeedback[feedbackType] + 1 || 1, // Если свойство отсутствует, начнем с 1
     }));
   };
 
