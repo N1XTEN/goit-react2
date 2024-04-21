@@ -12,3 +12,4 @@ const Feedback = ({ feedback, totalFeedback, positiveFeedback }) => {
     </div>
   );
 };
+export default Feedback;
