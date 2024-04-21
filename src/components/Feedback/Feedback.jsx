@@ -1,9 +1,9 @@
-import React from 'react';
+
 
 const Feedback = ({ feedback, totalFeedback, positiveFeedback }) => {
   const { good, neutral, bad } = feedback;
   return (
-    <div className="wrapp">
+    <div className={css.wrapp}>
       <p>Good: {good}</p>
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>

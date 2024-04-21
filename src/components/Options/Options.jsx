@@ -1,30 +1,35 @@
 
-import React from 'react';
+import clsx from 'clsx';
 
-const Options = ({ feedback, setFeedback }) => {
-  const updateFeedback = (type) => {
-    setFeedback(prevFeedback => ({
-      ...prevFeedback,
-      [type]: prevFeedback[type] + 1
-    }));
-  };
-
-  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
-
-  const resetFeedback = () => {
-    setFeedback({
-      good: 0,
-      neutral: 0,
-      bad: 0
-    });
-  };
-
+const Options = ({ updateFeedback, totalFeedback, resetFeedback }) => {
   return (
-    <div>
-      <button onClick={() => updateFeedback('good')}>Good</button>
-      <button onClick={() => updateFeedback('neutral')}>Neutral</button>
-      <button onClick={() => updateFeedback('bad')}>Bad</button>
-      {totalFeedback > 0 && <button onClick={resetFeedback}>Reset</button>}
+    <div className={css.wrapp}>
+      <button
+        className={clsx(css.good, css.btn)}
+        onClick={() => updateFeedback('good')}
+        type="button"
+      >
+        Good
+      </button>
+      <button
+        className={clsx(css.neutral, css.btn)}
+        onClick={() => updateFeedback('neutral')}
+        type="button"
+      >
+        Neutral
+      </button>
+      <button
+        className={clsx(css.bad, css.btn)}
+        onClick={() => updateFeedback('bad')}
+        type="button"
+      >
+        Bad
+      </button>
+      {totalFeedback > 0 && (
+        <button className={clsx(css.reset, css.btn)} onClick={resetFeedback}>
+          Reset
+        </button>
+      )}
     </div>
   );
 };

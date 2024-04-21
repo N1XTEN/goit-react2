@@ -1,11 +1,8 @@
-
-import React from 'react';
-
-const Notification = ({ totalFeedback }) => {
+const Notification = () => {
   return (
-    <div>
-      {totalFeedback === 0 && <p>No feedback yet</p>}
-    </div>
+    <>
+      <p className={css.text}>No feedback yet!</p>
+    </>
   );
 };
 
