@@ -1,5 +1,5 @@
 
-import clsx from 'clsx';
+
 
 const Options = ({ updateFeedback, totalFeedback, resetFeedback }) => {
   return (
