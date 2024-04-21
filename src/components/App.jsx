@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useState, useEffect } from 'react';
 import Options from './Options/Options';
 import Feedback from './Feedback/Feedback';
@@ -29,7 +28,7 @@ const App = () => {
     <div>
       <Description />
       <Options updateFeedback={updateFeedback} />
-      {totalFeedback > 0 && <Feedback good={good} neutral={neutral} bad={bad} />} {/* Проверьте эту строку */}
+      {totalFeedback > 0 && <Feedback good={good} neutral={neutral} bad={bad} />}
       {totalFeedback === 0 && <Notification />}
     </div>
   );

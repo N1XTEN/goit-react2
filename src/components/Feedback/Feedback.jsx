@@ -1,9 +1,8 @@
-// Feedback.jsx
 import React from 'react';
 
 const Feedback = ({ good, neutral, bad }) => {
   const totalFeedback = good + neutral + bad;
-  const positiveFeedback = Math.round((good / totalFeedback) * 100);
+  const positiveFeedback = totalFeedback === 0 ? 0 : Math.round((good / totalFeedback) * 100);
 
   return (
     <div>
