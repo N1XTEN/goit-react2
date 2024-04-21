@@ -5,7 +5,7 @@ import Feedback from './Feedback/Feedback';
 import Description from './description/Description';
 import Notification from './Notification/Notification';
 
-
+import './App.css';
 
 function App() {
   const [feedback, setFeedback] = useState(() => {
