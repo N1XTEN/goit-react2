@@ -3,6 +3,7 @@ import Options from './Options/Options';
 import Feedback from './Feedback/Feedback';
 import Description from './description/Description';
 import Notification from './Notification/Notification';
+import './App.scss';
 
 const App = () => {
   const [feedback, setFeedback] = useState(() => {
@@ -37,7 +38,13 @@ const App = () => {
       <Description />
       <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} resetFeedback={resetFeedback} />
       {totalFeedback > 0 ? (
-        <Feedback feedback={feedback} totalFeedback={totalFeedback} positiveFeedback={positiveFeedback} />
+        <Feedback
+          good={feedback.good}
+          neutral={feedback.neutral}
+          bad={feedback.bad}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
       ) : (
         <Notification />
       )}

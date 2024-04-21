@@ -1,7 +1,7 @@
+// Feedback.jsx
 import React from 'react';
 
-const Feedback = ({ feedback, totalFeedback, positiveFeedback }) => {
-  const { good, neutral, bad } = feedback;
+const Feedback = ({ good, neutral, bad, totalFeedback, positiveFeedback }) => {
   return (
     <div className="wrapp">
       <p>Good: {good}</p>
@@ -12,4 +12,5 @@ const Feedback = ({ feedback, totalFeedback, positiveFeedback }) => {
     </div>
   );
 };
+
 export default Feedback;
