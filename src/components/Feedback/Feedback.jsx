@@ -1,15 +1,18 @@
-
+// Feedback.jsx
 import React from 'react';
 
-const Feedback = ({ feedback, totalFeedback, positiveFeedback }) => {
+const Feedback = ({ good, neutral, bad }) => {
+  const totalFeedback = good + neutral + bad;
+  const positiveFeedback = Math.round((good / totalFeedback) * 100);
+
   return (
     <div>
-      <h2>Feedback Statistics</h2>
-      <p>Good: {feedback.good}</p>
-      <p>Neutral: {feedback.neutral}</p>
-      <p>Bad: {feedback.bad}</p>
-      <p>Total Feedback: {totalFeedback}</p>
-      <p>Positive Feedback: {positiveFeedback}%</p>
+      <h2>Feedback statistics</h2>
+      <p>Good: {good}</p>
+      <p>Neutral: {neutral}</p>
+      <p>Bad: {bad}</p>
+      <p>Total: {totalFeedback}</p>
+      <p>Positive feedback: {positiveFeedback}%</p>
     </div>
   );
 };

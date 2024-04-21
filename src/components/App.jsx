@@ -11,7 +11,8 @@ const App = () => {
     return storedFeedback ? JSON.parse(storedFeedback) : { good: 0, neutral: 0, bad: 0 };
   });
 
-  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const { good, neutral, bad } = feedback;
+  const totalFeedback = good + neutral + bad;
 
   useEffect(() => {
     localStorage.setItem('feedback', JSON.stringify(feedback));
@@ -28,7 +29,7 @@ const App = () => {
     <div>
       <Description />
       <Options updateFeedback={updateFeedback} />
-      {totalFeedback > 0 && <Feedback good={feedback.good} neutral={feedback.neutral} bad={feedback.bad} />}
+      {totalFeedback > 0 && <Feedback good={good} neutral={neutral} bad={bad} />} {/* Проверьте эту строку */}
       {totalFeedback === 0 && <Notification />}
     </div>
   );
