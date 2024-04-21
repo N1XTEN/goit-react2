@@ -1,10 +1,9 @@
 // App.jsx
 import React, { useState, useEffect } from 'react';
-import Feedback from './Feedback';
-import Options from './Options';
-import Notification from './Notification';
-import Description from './Description';
-
+import Options from './Options/Options';
+import Feedback from './Feedback/Feedback';
+import Notification from './Notification/Notification';
+import Description from './description/Description';
 const App = () => {
   const [feedback, setFeedback] = useState(() => {
     const storedFeedback = localStorage.getItem('feedback');
