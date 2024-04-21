@@ -3,7 +3,7 @@ import Options from './Options/Options';
 import Feedback from './Feedback/Feedback';
 import Description from './description/Description';
 import Notification from './Notification/Notification';
-import './App.scss';
+
 
 const App = () => {
   const [feedback, setFeedback] = useState(() => {
