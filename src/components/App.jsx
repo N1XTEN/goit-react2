@@ -1,22 +1,15 @@
-// App.jsx
 import React, { useState, useEffect } from 'react';
 import Options from './Options/Options';
 import Feedback from './Feedback/Feedback';
-import Notification from './Notification/Notification';
 import Description from './description/Description';
+import Notification from './Notification/Notification';
+import './App.scss';
 
 const App = () => {
   const [feedback, setFeedback] = useState(() => {
-    const storedFeedback = localStorage.getItem('feedback');
-    return storedFeedback ? JSON.parse(storedFeedback) : { good: 0, neutral: 0, bad: 0 };
+    const savedFeedback = localStorage.getItem('saved-feedback');
+    return savedFeedback ? JSON.parse(savedFeedback) : { good: 0, neutral: 0, bad: 0 };
   });
-
-  const { good, neutral, bad } = feedback;
-  const totalFeedback = good + neutral + bad;
-
-  useEffect(() => {
-    localStorage.setItem('feedback', JSON.stringify(feedback));
-  }, [feedback]);
 
   const updateFeedback = (feedbackType) => {
     setFeedback((prevFeedback) => ({
@@ -25,12 +18,30 @@ const App = () => {
     }));
   };
 
+  const resetFeedback = () => {
+    setFeedback({ good: 0, neutral: 0, bad: 0 });
+  };
+
+  const totalFeedback = feedback.good + feedback.neutral + feedback.bad;
+  const positiveFeedback = Math.round((feedback.good / totalFeedback) * 100);
+
+  useEffect(() => {
+    if (totalFeedback > 0) {
+      localStorage.setItem('saved-feedback', JSON.stringify(feedback));
+    } else {
+      localStorage.removeItem('saved-feedback');
+    }
+  }, [feedback, totalFeedback]);
+
   return (
-    <div>
+    <div className="container">
       <Description />
-      <Options updateFeedback={updateFeedback} />
-      <Feedback good={good} neutral={neutral} bad={bad} /> {/* Добавляем компонент Feedback с передачей параметров */}
-      {totalFeedback === 0 && <Notification />}
+      <Options updateFeedback={updateFeedback} totalFeedback={totalFeedback} resetFeedback={resetFeedback} />
+      {totalFeedback > 0 ? (
+        <Feedback feedback={feedback} totalFeedback={totalFeedback} positiveFeedback={positiveFeedback} />
+      ) : (
+        <Notification />
+      )}
     </div>
   );
 };

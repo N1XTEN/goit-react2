@@ -1,17 +1,14 @@
 import React from 'react';
 
-const Feedback = ({ good, neutral, bad }) => {
-  const totalFeedback = good + neutral + bad;
-  const positiveFeedback = totalFeedback === 0 ? 0 : Math.round((good / totalFeedback) * 100);
-
+const Feedback = ({ feedback, totalFeedback, positiveFeedback }) => {
+  const { good, neutral, bad } = feedback;
   return (
-    <div>
-      <h2>Feedback statistics</h2>
+    <div className="wrapp">
       <p>Good: {good}</p>
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>
       <p>Total: {totalFeedback}</p>
-      <p>Positive feedback: {positiveFeedback}%</p>
+      <p>Positive: {positiveFeedback}%</p>
     </div>
   );
 };
