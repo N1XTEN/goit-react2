@@ -1,4 +1,4 @@
-
+import css from './Feedback.module.scss';
 
 const Feedback = ({ feedback, totalFeedback, positiveFeedback }) => {
   const { good, neutral, bad } = feedback;

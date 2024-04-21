@@ -1,4 +1,4 @@
-
+import css from './Description.module.scss';
 
 const Description = () => {
   return (

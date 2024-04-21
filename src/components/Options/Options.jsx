@@ -1,5 +1,6 @@
+import css from './Options.module.scss';
 
-
+import clsx from 'clsx';
 
 const Options = ({ updateFeedback, totalFeedback, resetFeedback }) => {
   return (

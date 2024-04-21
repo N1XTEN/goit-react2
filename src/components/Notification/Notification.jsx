@@ -1,3 +1,5 @@
+import css from './Notification.module.scss';
+
 const Notification = () => {
   return (
     <>
